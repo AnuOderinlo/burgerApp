@@ -13,10 +13,18 @@ const BuildControls = (props) => {
   return (
     <div className="buildControls">
       {controls.map((crtl) => {
-        return <BuildControl key={crtl.label} label={crtl.label} />;
+        return (
+          <BuildControl
+            removed={() => props.removeIngredient(crtl.type)}
+            added={() => props.addIngredient(crtl.type)}
+            key={crtl.label}
+            label={crtl.label}
+            disabled={props.disabled[crtl.type]}
+          />
+        );
       })}
     </div>
   );
 };
-
+// added={() => props.addIngredient(crtl.type)}
 export default BuildControls;
